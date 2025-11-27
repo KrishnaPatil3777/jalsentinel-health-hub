@@ -9,6 +9,7 @@ import DashboardPreview from "./pages/DashboardPreview";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import WaterChatbot from "./components/WaterChatbot";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <WaterChatbot />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
