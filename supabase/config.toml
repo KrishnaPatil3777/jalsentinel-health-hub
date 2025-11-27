@@ -1,0 +1,4 @@
+project_id = "nozgctpxaashnhicqiic"
+
+[functions.water-chatbot]
+verify_jwt = false
