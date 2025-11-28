@@ -100,7 +100,7 @@ const Home = () => {
                 
                 <div className="relative inline-block group">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-primary/60 blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
-                  <h2 className="relative text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent animate-pulse hover:scale-105 transition-transform duration-300 py-2 px-4 border-2 border-primary/30 rounded-lg backdrop-blur-sm shadow-lg">
+                  <h2 className="relative text-3xl md:text-4xl font-bold text-white animate-pulse hover:scale-105 transition-transform duration-300 py-2 px-4 border-2 border-primary/30 rounded-lg backdrop-blur-sm shadow-lg bg-gradient-to-r from-primary via-primary/90 to-primary/70">
                     ⚡ AI-Powered Water & Health Monitoring ⚡
                   </h2>
                 </div>
