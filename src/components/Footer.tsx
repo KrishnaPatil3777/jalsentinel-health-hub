@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <h3 className="text-lg font-bold">JalSentinel</h3>
-            <p className="text-sm text-secondary-foreground/80">
+            <p className="text-sm text-secondary-foreground">
               AI-powered Smart Water & Health Monitoring System
             </p>
           </div>
