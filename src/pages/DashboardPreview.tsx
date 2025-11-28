@@ -26,9 +26,9 @@ const DashboardPreview = () => {
             <div className="space-y-12">
               <Card className="overflow-hidden">
                 <CardHeader>
-                  <CardTitle className="text-2xl">GIS Heatmap - Northeastern Region</CardTitle>
+                  <CardTitle className="text-2xl">Interactive Tableau Dashboard - Northeastern Region</CardTitle>
                   <CardDescription className="text-base">
-                    Interactive map showing water contamination levels and disease outbreak data
+                    Live Tableau analytics showing water quality metrics, contamination levels, and disease outbreak data
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
