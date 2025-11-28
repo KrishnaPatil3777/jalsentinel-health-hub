@@ -11,26 +11,30 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center space-x-3">
-            <img src={logo} alt="JalSentinel Logo" className="h-10 w-10" />
-            <span className="text-xl font-bold text-foreground">JalSentinel</span>
+          <Link to="/" className="flex items-center space-x-3 group">
+            <img src={logo} alt="JalSentinel Logo" className="h-10 w-10 group-hover:scale-110 transition-transform duration-300" />
+            <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">JalSentinel</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-foreground hover:text-primary transition-colors">
-              Home
+            <Link to="/" className="relative text-foreground hover:text-primary transition-all duration-300 hover:scale-110 group">
+              <span>Home</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"></span>
             </Link>
-            <Link to="/features" className="text-foreground hover:text-primary transition-colors">
-              Features
+            <Link to="/features" className="relative text-foreground hover:text-primary transition-all duration-300 hover:scale-110 group">
+              <span>Features</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"></span>
             </Link>
-            <Link to="/dashboard" className="text-foreground hover:text-primary transition-colors">
-              Dashboard
+            <Link to="/dashboard" className="relative text-foreground hover:text-primary transition-all duration-300 hover:scale-110 group">
+              <span>Dashboard</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"></span>
             </Link>
-            <Link to="/about" className="text-foreground hover:text-primary transition-colors">
-              About
+            <Link to="/about" className="relative text-foreground hover:text-primary transition-all duration-300 hover:scale-110 group">
+              <span>About</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"></span>
             </Link>
             <Link to="/contact">
-              <Button variant="default">Contact Us</Button>
+              <Button variant="default" className="hover:scale-110 transition-transform duration-300 hover:shadow-xl">Contact Us</Button>
             </Link>
           </div>
 

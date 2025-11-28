@@ -42,10 +42,14 @@ const Features = () => {
       <Navbar />
       
       <main className="flex-grow">
-        <section className="py-20 bg-gradient-to-br from-background to-accent">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+        <section className="py-20 bg-gradient-to-br from-background via-primary/5 to-accent/80 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-10 left-10 w-72 h-72 bg-gradient-to-r from-primary/30 to-transparent rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-10 right-10 w-72 h-72 bg-gradient-to-l from-accent/30 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-16 animate-fade-in">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 hover:scale-105 transition-transform duration-300">
                 Powerful Features
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -68,10 +72,13 @@ const Features = () => {
           </div>
         </section>
         
-        <section className="py-20 bg-card">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+        <section className="py-20 bg-gradient-to-b from-card to-background relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-primary/40 to-accent/40 rounded-full blur-3xl animate-pulse"></div>
+          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-12 animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 hover:scale-105 transition-transform duration-300">
                 How It Works
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -80,41 +87,41 @@ const Features = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="text-center group hover:-translate-y-2 transition-all duration-500 animate-fade-in">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 group-hover:scale-125 group-hover:shadow-xl transition-all duration-300">
                   1
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Data Collection</h3>
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Data Collection</h3>
                 <p className="text-muted-foreground text-sm">
                   Sensors and community reports gather water quality data
                 </p>
               </div>
               
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="text-center group hover:-translate-y-2 transition-all duration-500 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 group-hover:scale-125 group-hover:shadow-xl transition-all duration-300">
                   2
                 </div>
-                <h3 className="font-semibold text-lg mb-2">AI Analysis</h3>
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">AI Analysis</h3>
                 <p className="text-muted-foreground text-sm">
                   Machine learning processes and identifies patterns
                 </p>
               </div>
               
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="text-center group hover:-translate-y-2 transition-all duration-500 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 group-hover:scale-125 group-hover:shadow-xl transition-all duration-300">
                   3
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Alert Generation</h3>
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Alert Generation</h3>
                 <p className="text-muted-foreground text-sm">
                   System automatically notifies relevant stakeholders
                 </p>
               </div>
               
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="text-center group hover:-translate-y-2 transition-all duration-500 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 group-hover:scale-125 group-hover:shadow-xl transition-all duration-300">
                   4
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Action Taken</h3>
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Action Taken</h3>
                 <p className="text-muted-foreground text-sm">
                   Officials respond quickly to protect communities
                 </p>

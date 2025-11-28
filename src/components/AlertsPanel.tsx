@@ -93,14 +93,14 @@ const getSeverityBadge = (severity: string) => {
 
 const AlertsPanel = () => {
   return (
-    <Card className="h-full">
+    <Card className="h-full hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-card to-card/50 animate-fade-in">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
             <CardTitle className="text-2xl">Active Alerts</CardTitle>
             <CardDescription>Priority notifications requiring action</CardDescription>
           </div>
-          <Badge variant="secondary" className="text-lg px-3 py-1">
+          <Badge variant="secondary" className="text-lg px-3 py-1 hover:scale-110 transition-transform">
             {alerts.length}
           </Badge>
         </div>
@@ -108,26 +108,27 @@ const AlertsPanel = () => {
       <CardContent>
         <ScrollArea className="h-[500px] pr-4">
           <div className="space-y-4">
-            {alerts.map((alert) => (
+            {alerts.map((alert, index) => (
               <div
                 key={alert.id}
-                className={`p-4 border-l-4 rounded-lg ${getSeverityColor(alert.severity)}`}
+                className={`p-4 border-l-4 rounded-lg ${getSeverityColor(alert.severity)} hover:shadow-lg hover:-translate-x-2 transition-all duration-300 cursor-pointer animate-fade-in`}
+                style={{ animationDelay: `${index * 50}ms` }}
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-start gap-3 flex-1">
-                    <div className="mt-0.5">
+                    <div className="mt-0.5 hover:scale-125 transition-transform">
                       {getSeverityIcon(alert.severity)}
                     </div>
                     <div className="flex-1 space-y-2">
                       <div className="flex items-center gap-2">
-                        <h4 className="font-semibold text-foreground">{alert.title}</h4>
+                        <h4 className="font-semibold text-foreground hover:text-primary transition-colors">{alert.title}</h4>
                         {getSeverityBadge(alert.severity)}
                       </div>
                       <p className="text-sm text-muted-foreground">{alert.location}</p>
                       <p className="text-sm">{alert.description}</p>
                       <div className="flex items-center justify-between pt-2">
                         <span className="text-xs text-muted-foreground">{alert.time}</span>
-                        <Button size="sm" variant="outline">
+                        <Button size="sm" variant="outline" className="hover:scale-110 transition-transform">
                           {alert.action}
                         </Button>
                       </div>

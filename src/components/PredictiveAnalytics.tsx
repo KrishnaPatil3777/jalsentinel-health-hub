@@ -85,14 +85,14 @@ const getTrendIcon = (trend: string) => {
 
 const PredictiveAnalytics = () => {
   return (
-    <Card>
+    <Card className="hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-card to-card/50 animate-fade-in">
       <CardHeader>
         <div className="flex items-start justify-between">
           <div>
-            <CardTitle className="text-2xl">7-Day Outbreak Forecast</CardTitle>
+            <CardTitle className="text-2xl hover:text-primary transition-colors">7-Day Outbreak Forecast</CardTitle>
             <CardDescription>AI-powered risk assessment for water-borne disease outbreaks</CardDescription>
           </div>
-          <Badge variant="secondary" className="text-sm">
+          <Badge variant="secondary" className="text-sm hover:scale-110 transition-transform">
             <Activity className="w-3 h-3 mr-1" />
             ML Model v2.3
           </Badge>
@@ -101,17 +101,23 @@ const PredictiveAnalytics = () => {
       <CardContent>
         <div className="space-y-6">
           {predictions.map((pred, index) => (
-            <div key={index} className="p-4 bg-card border border-border rounded-lg space-y-3">
+            <div 
+              key={index} 
+              className="p-4 bg-card border border-border rounded-lg space-y-3 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer group animate-fade-in"
+              style={{ animationDelay: `${index * 50}ms` }}
+            >
               <div className="flex items-start justify-between">
                 <div className="space-y-1">
-                  <h4 className="font-semibold text-foreground">{pred.zone}</h4>
+                  <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">{pred.zone}</h4>
                   <div className="flex items-center gap-2">
                     {getRiskBadge(pred.riskLevel)}
-                    {getTrendIcon(pred.trend)}
+                    <div className="group-hover:scale-125 transition-transform">
+                      {getTrendIcon(pred.trend)}
+                    </div>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className={`text-3xl font-bold ${getRiskColor(pred.riskLevel)}`}>
+                  <p className={`text-3xl font-bold ${getRiskColor(pred.riskLevel)} group-hover:scale-110 transition-transform`}>
                     {pred.probability}%
                   </p>
                   <p className="text-xs text-muted-foreground">Probability</p>
@@ -130,7 +136,7 @@ const PredictiveAnalytics = () => {
                 <p className="text-sm font-medium text-foreground">Contributing Factors:</p>
                 <div className="flex flex-wrap gap-2">
                   {pred.factors.map((factor, i) => (
-                    <Badge key={i} variant="secondary" className="text-xs">
+                    <Badge key={i} variant="secondary" className="text-xs hover:scale-110 transition-transform">
                       {factor}
                     </Badge>
                   ))}
@@ -147,7 +153,7 @@ const PredictiveAnalytics = () => {
           ))}
         </div>
 
-        <div className="mt-6 p-4 bg-muted/30 rounded-lg">
+        <div className="mt-6 p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
           <p className="text-sm text-muted-foreground">
             <strong className="text-foreground">Model Accuracy:</strong> Predictions based on historical data, 
             weather patterns, water quality parameters, and disease surveillance data. 
