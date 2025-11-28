@@ -5,6 +5,7 @@ import HeatmapComponent from "@/components/HeatmapComponent";
 import AnalyticsChart from "@/components/AnalyticsChart";
 import AlertsPanel from "@/components/AlertsPanel";
 import PredictiveAnalytics from "@/components/PredictiveAnalytics";
+import ResourcesSection from "@/components/ResourcesSection";
 
 const DashboardPreview = () => {
   return (
@@ -14,7 +15,7 @@ const DashboardPreview = () => {
       <main className="flex-grow bg-gradient-to-br from-background to-accent">
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 animate-fade-in">
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
                 Dashboard Preview
               </h1>
@@ -24,14 +25,17 @@ const DashboardPreview = () => {
             </div>
             
             <div className="space-y-12">
-              <Card className="overflow-hidden">
-                <CardHeader>
-                  <CardTitle className="text-2xl">Interactive Tableau Dashboard - Northeastern Region</CardTitle>
-                  <CardDescription className="text-base">
-                    Live Tableau analytics showing water quality metrics, contamination levels, and disease outbreak data
+              <Card className="overflow-hidden animate-fade-in hover:shadow-xl transition-all duration-300">
+                <CardHeader className="bg-gradient-to-r from-primary/5 to-accent/5 pb-6">
+                  <CardTitle className="text-2xl mb-3">
+                    Interactive Tableau Dashboard - Northeastern Region
+                  </CardTitle>
+                  <CardDescription className="text-base leading-relaxed">
+                    Live Tableau analytics showing water quality metrics, contamination levels, and disease outbreak data. 
+                    Explore the visualization below for real-time insights into drainage system analysis and water safety monitoring.
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="pt-6">
                   <HeatmapComponent />
                 </CardContent>
               </Card>
@@ -46,6 +50,8 @@ const DashboardPreview = () => {
               </div>
               
               <PredictiveAnalytics />
+              
+              <ResourcesSection />
             </div>
           </div>
         </section>

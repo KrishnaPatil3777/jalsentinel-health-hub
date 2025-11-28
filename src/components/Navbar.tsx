@@ -1,11 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import logo from "@/assets/logo-placeholder.png";
+import NotificationBell from "./NotificationBell";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import { Session } from "@supabase/supabase-js";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [session, setSession] = useState<Session | null>(null);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast({
+        title: "Error",
+        description: "Failed to log out",
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Logged out",
+        description: "You have been successfully logged out",
+      });
+    }
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border shadow-sm">
@@ -36,6 +70,31 @@ const Navbar = () => {
             <Link to="/contact">
               <Button variant="default" className="hover:scale-110 transition-transform duration-300 hover:shadow-xl">Contact Us</Button>
             </Link>
+          </div>
+
+          <div className="hidden md:flex items-center gap-2">
+            <NotificationBell />
+            {session ? (
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleLogout}
+                className="hover:scale-105 transition-transform"
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                Logout
+              </Button>
+            ) : (
+              <Link to="/auth">
+                <Button 
+                  variant="default" 
+                  size="sm"
+                  className="hover:scale-105 transition-transform"
+                >
+                  Login / Sign Up
+                </Button>
+              </Link>
+            )}
           </div>
 
           <button
@@ -83,6 +142,25 @@ const Navbar = () => {
                 Contact Us
               </Button>
             </Link>
+            {session ? (
+              <Button 
+                variant="outline" 
+                className="w-full" 
+                onClick={() => {
+                  handleLogout();
+                  setIsOpen(false);
+                }}
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                Logout
+              </Button>
+            ) : (
+              <Link to="/auth" onClick={() => setIsOpen(false)}>
+                <Button variant="default" className="w-full">
+                  Login / Sign Up
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       )}
