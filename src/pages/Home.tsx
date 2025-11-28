@@ -60,10 +60,11 @@ const Home = () => {
         {/* Animated Hero Section */}
         <section className="relative min-h-[90vh] flex items-center overflow-hidden">
           {/* Animated Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-accent">
-            <div className="absolute inset-0 opacity-30">
-              <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/10 to-accent/80">
+            <div className="absolute inset-0 opacity-40">
+              <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary/30 to-primary/10 rounded-full blur-3xl animate-pulse"></div>
+              <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-l from-accent/40 to-primary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-t from-primary/20 to-accent/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
             </div>
           </div>
 
@@ -97,9 +98,12 @@ const Home = () => {
                   <span className="inline-block hover:scale-110 transition-transform duration-300 text-primary">Sentinel</span>
                 </h1>
                 
-                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                  AI-Powered Water & Health Monitoring
-                </h2>
+                <div className="relative inline-block group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-primary/60 blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
+                  <h2 className="relative text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent animate-pulse hover:scale-105 transition-transform duration-300 py-2 px-4 border-2 border-primary/30 rounded-lg backdrop-blur-sm shadow-lg">
+                    ⚡ AI-Powered Water & Health Monitoring ⚡
+                  </h2>
+                </div>
                 
                 <p className="text-xl text-muted-foreground max-w-2xl font-semibold">
                   Detect Early. Act Smart. Stay Healthy.

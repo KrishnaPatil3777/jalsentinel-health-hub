@@ -9,10 +9,14 @@ const About = () => {
       <Navbar />
       
       <main className="flex-grow">
-        <section className="py-20 bg-gradient-to-br from-background to-accent">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+        <section className="py-20 bg-gradient-to-br from-background via-primary/5 to-accent/80 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-primary/30 to-transparent rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-l from-accent/30 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-16 animate-fade-in">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 hover:scale-105 transition-transform duration-300">
                 About JalSentinel
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -21,12 +25,12 @@ const About = () => {
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-              <Card>
+              <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-in bg-gradient-to-br from-card to-card/50 group">
                 <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-6 transition-all duration-500">
                     <Target className="w-6 h-6 text-primary" />
                   </div>
-                  <CardTitle className="text-2xl">Our Mission</CardTitle>
+                  <CardTitle className="text-2xl group-hover:text-primary transition-colors">Our Mission</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base leading-relaxed">
@@ -39,12 +43,12 @@ const About = () => {
                 </CardContent>
               </Card>
               
-              <Card>
+              <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-in bg-gradient-to-br from-card to-card/50 group" style={{ animationDelay: '0.1s' }}>
                 <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-6 transition-all duration-500">
                     <Heart className="w-6 h-6 text-primary" />
                   </div>
-                  <CardTitle className="text-2xl">Why JalSentinel Matters</CardTitle>
+                  <CardTitle className="text-2xl group-hover:text-primary transition-colors">Why JalSentinel Matters</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base leading-relaxed">
@@ -58,12 +62,12 @@ const About = () => {
               </Card>
             </div>
             
-            <Card className="mb-16">
+            <Card className="mb-16 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-in bg-gradient-to-br from-card to-card/50 group" style={{ animationDelay: '0.2s' }}>
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-6 transition-all duration-500">
                   <Users className="w-6 h-6 text-primary" />
                 </div>
-                <CardTitle className="text-2xl">Target Audience</CardTitle>
+                <CardTitle className="text-2xl group-hover:text-primary transition-colors">Target Audience</CardTitle>
                 <CardDescription className="text-base">
                   JalSentinel serves multiple stakeholders in the public health ecosystem
                 </CardDescription>
@@ -105,12 +109,12 @@ const About = () => {
               </CardContent>
             </Card>
             
-            <Card>
+            <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-in bg-gradient-to-br from-card to-card/50 group" style={{ animationDelay: '0.3s' }}>
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-125 group-hover:rotate-6 transition-all duration-500">
                   <TrendingUp className="w-6 h-6 text-primary" />
                 </div>
-                <CardTitle className="text-2xl">Impact Goals</CardTitle>
+                <CardTitle className="text-2xl group-hover:text-primary transition-colors">Impact Goals</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
