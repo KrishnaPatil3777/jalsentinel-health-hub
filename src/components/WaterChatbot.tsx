@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
+import { MessageCircle, X, Send, Loader2, Mic, Volume2, VolumeX } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { useToast } from '@/components/ui/use-toast';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -19,8 +20,13 @@ export default function WaterChatbot() {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [autoSpeak, setAutoSpeak] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<any>(null);
+  const { toast } = useToast();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -29,6 +35,91 @@ export default function WaterChatbot() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    // Initialize speech recognition
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
+      recognitionRef.current = new SpeechRecognition();
+      recognitionRef.current.continuous = false;
+      recognitionRef.current.interimResults = false;
+      recognitionRef.current.lang = 'en-US';
+
+      recognitionRef.current.onresult = (event: any) => {
+        const transcript = event.results[0][0].transcript;
+        setInput(transcript);
+        setIsListening(false);
+      };
+
+      recognitionRef.current.onerror = (event: any) => {
+        console.error('Speech recognition error:', event.error);
+        setIsListening(false);
+        toast({
+          title: "Voice input error",
+          description: "Failed to recognize speech. Please try again.",
+          variant: "destructive",
+        });
+      };
+
+      recognitionRef.current.onend = () => {
+        setIsListening(false);
+      };
+    }
+
+    return () => {
+      if (recognitionRef.current) {
+        recognitionRef.current.stop();
+      }
+      window.speechSynthesis.cancel();
+    };
+  }, [toast]);
+
+  const startListening = () => {
+    if (!recognitionRef.current) {
+      toast({
+        title: "Not supported",
+        description: "Speech recognition is not supported in your browser.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      setIsListening(true);
+      recognitionRef.current.start();
+    } catch (error) {
+      console.error('Failed to start listening:', error);
+      setIsListening(false);
+    }
+  };
+
+  const stopListening = () => {
+    if (recognitionRef.current) {
+      recognitionRef.current.stop();
+    }
+    setIsListening(false);
+  };
+
+  const speak = (text: string) => {
+    if (!autoSpeak) return;
+
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+    utterance.volume = 1.0;
+    
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const stopSpeaking = () => {
+    window.speechSynthesis.cancel();
+    setIsSpeaking(false);
+  };
 
   const streamChat = async (userMessage: string) => {
     const newMessages = [...messages, { role: 'user' as const, content: userMessage }];
@@ -103,6 +194,11 @@ export default function WaterChatbot() {
             break;
           }
         }
+      }
+
+      // Speak the complete response
+      if (assistantContent && autoSpeak) {
+        speak(assistantContent);
       }
     } catch (error) {
       console.error('Chat error:', error);
@@ -195,16 +291,46 @@ export default function WaterChatbot() {
           </ScrollArea>
 
           {/* Input */}
-          <div className="p-4 border-t border-border">
+          <div className="p-4 border-t border-border space-y-2">
+            <div className="flex items-center gap-2 mb-2">
+              <Button
+                onClick={() => setAutoSpeak(!autoSpeak)}
+                variant="ghost"
+                size="sm"
+                className="h-8"
+              >
+                {autoSpeak ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
+                <span className="ml-2 text-xs">{autoSpeak ? 'Voice ON' : 'Voice OFF'}</span>
+              </Button>
+              {isSpeaking && (
+                <Button
+                  onClick={stopSpeaking}
+                  variant="ghost"
+                  size="sm"
+                  className="h-8"
+                >
+                  <VolumeX className="h-4 w-4" />
+                  <span className="ml-2 text-xs">Stop</span>
+                </Button>
+              )}
+            </div>
             <div className="flex gap-2">
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask about water quality or diseases..."
-                disabled={isLoading}
+                disabled={isLoading || isListening}
                 className="flex-1"
               />
+              <Button
+                onClick={isListening ? stopListening : startListening}
+                disabled={isLoading}
+                size="icon"
+                variant={isListening ? "destructive" : "outline"}
+              >
+                <Mic className={`h-4 w-4 ${isListening ? 'animate-pulse' : ''}`} />
+              </Button>
               <Button
                 onClick={handleSend}
                 disabled={!input.trim() || isLoading}
