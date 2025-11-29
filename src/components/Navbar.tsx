@@ -63,6 +63,10 @@ const Navbar = () => {
               <span>Dashboard</span>
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"></span>
             </Link>
+            <Link to="/water-testing" className="relative text-foreground hover:text-primary transition-all duration-300 hover:scale-110 group">
+              <span>Water Testing</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"></span>
+            </Link>
             <Link to="/about" className="relative text-foreground hover:text-primary transition-all duration-300 hover:scale-110 group">
               <span>About</span>
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-300"></span>
@@ -129,6 +133,13 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Dashboard
+            </Link>
+            <Link
+              to="/water-testing"
+              className="block text-foreground hover:text-primary transition-colors py-2"
+              onClick={() => setIsOpen(false)}
+            >
+              Water Testing
             </Link>
             <Link
               to="/about"
