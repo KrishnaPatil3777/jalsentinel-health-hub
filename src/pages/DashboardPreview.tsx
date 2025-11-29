@@ -14,10 +14,10 @@ const DashboardPreview = () => {
       <Navbar />
       
       <main className="flex-grow">
-        <section className="py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <section className="py-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
             {/* Top Row - Map and Sidebar */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Main Map Section - Takes up 2 columns */}
               <div className="lg:col-span-2">
                 <InteractiveMap />
@@ -34,32 +34,34 @@ const DashboardPreview = () => {
                 
                 <TrendsCard />
                 
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold text-foreground">Quick Alerts</h3>
-                  <AlertCard
-                    type="warning"
-                    icon="bell"
-                    title="Unsafe Water Reported."
-                    description="Water test shows E. coli contamination in user-submitted sample."
-                  />
-                  
-                  <AlertCard
-                    type="info"
-                    icon="droplet"
-                    title="Water Supply Update"
-                    description="Scheduled maintenance in Meghalaya region."
-                  />
+                <div className="space-y-3">
+                  <h3 className="text-xl font-bold text-foreground">Quick Alerts</h3>
+                  <div className="space-y-3">
+                    <AlertCard
+                      type="warning"
+                      icon="bell"
+                      title="Unsafe Water Reported"
+                      description="Water test shows E. coli contamination in user-submitted sample."
+                    />
+                    
+                    <AlertCard
+                      type="info"
+                      icon="droplet"
+                      title="Water Supply Update"
+                      description="Scheduled maintenance in Meghalaya region."
+                    />
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Analytics Charts Section */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <AnalyticsChart />
             </div>
 
             {/* Alerts and Predictions Row */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <AlertsPanel />
               <PredictiveAnalytics />
             </div>
