@@ -55,16 +55,16 @@ const DashboardPreview = () => {
               </div>
             </div>
 
-            {/* Analytics Charts and Predictions Row */}
+            {/* Analytics Chart and Active Alerts Row */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <AnalyticsChart />
-              <PredictiveAnalytics />
+              <AlertsPanel />
             </div>
 
-            {/* Active Alerts - Center Aligned */}
+            {/* Contamination Risk Forecast - Center Aligned */}
             <div className="flex justify-center">
               <div className="w-full lg:w-2/3">
-                <AlertsPanel />
+                <PredictiveAnalytics />
               </div>
             </div>
 
