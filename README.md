@@ -1,3 +1,5 @@
+ Website Link: https://jalsentinel-health-hub-jci1.vercel.app/
+
 JalSentinel – Smart Health Monitoring Dashboard
 
 The JalSentinel Web Dashboard serves as a centralized platform for government officials, panchayat authorities, and healthcare administrators to monitor and manage water-borne disease occurrences in real time.
