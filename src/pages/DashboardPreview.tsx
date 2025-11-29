@@ -27,11 +27,11 @@ const DashboardPreview = () => {
             <div className="space-y-12">
               <Card className="overflow-hidden animate-fade-in hover:shadow-xl transition-all duration-300">
                 <CardHeader className="bg-gradient-to-r from-primary/5 to-accent/5 pb-6">
-                  <CardTitle className="text-2xl mb-3">
+                  <CardTitle className="text-xl md:text-2xl mb-3 break-words">
                     Interactive Tableau Dashboard - Northeastern Region
                   </CardTitle>
-                  <CardDescription className="text-base leading-relaxed">
-                    Live Tableau analytics showing water quality metrics, contamination levels, and disease outbreak data. 
+                  <CardDescription className="text-sm md:text-base leading-relaxed break-words">
+                    Live Tableau analytics showing water quality metrics, contamination levels, and disease outbreak data.<br />
                     Explore the visualization below for real-time insights into drainage system analysis and water safety monitoring.
                   </CardDescription>
                 </CardHeader>
