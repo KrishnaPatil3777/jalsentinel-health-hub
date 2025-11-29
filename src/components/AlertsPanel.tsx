@@ -8,46 +8,46 @@ const alerts = [
   {
     id: 1,
     severity: 'critical',
-    title: 'High E.coli levels detected',
-    location: 'Assam - Zone B',
+    title: 'Severe water contamination detected',
+    region: 'Assam Region',
     time: '15 mins ago',
-    description: 'Water sample shows 450 CFU/100ml - exceeds safe limit',
+    description: 'E.coli levels at 550 CFU/100ml with heavy metal contamination',
     action: 'Deploy purification team',
   },
   {
     id: 2,
     severity: 'warning',
-    title: 'Turbidity increase detected',
-    location: 'Manipur - Zone D',
+    title: 'Industrial pollutants detected',
+    region: 'Manipur Region',
     time: '2 hours ago',
-    description: 'Turbidity levels at 4.2 NTU and rising',
+    description: 'Heavy metals exceeding safe limits in water supply',
     action: 'Monitor and test',
   },
   {
     id: 3,
     severity: 'critical',
     title: 'Disease outbreak reported',
-    location: 'Tripura - Zone A',
+    region: 'Tripura Region',
     time: '3 hours ago',
-    description: '12 new cholera cases in the last 24 hours',
+    description: '18 new cholera cases linked to contaminated water source',
     action: 'Immediate intervention required',
   },
   {
     id: 4,
     severity: 'info',
-    title: 'pH fluctuation',
-    location: 'Meghalaya - Zone C',
+    title: 'Water quality improving',
+    region: 'Meghalaya Region',
     time: '5 hours ago',
-    description: 'pH dropped to 6.3, within acceptable range',
+    description: 'Contamination levels decreasing after treatment',
     action: 'Continue monitoring',
   },
   {
     id: 5,
     severity: 'warning',
-    title: 'TDS levels elevated',
-    location: 'Nagaland - Zone E',
+    title: 'Chemical contamination alert',
+    region: 'Nagaland Region',
     time: '6 hours ago',
-    description: 'Total Dissolved Solids at 380 ppm',
+    description: 'Pesticide residues detected in groundwater samples',
     action: 'Schedule detailed analysis',
   },
 ];
@@ -124,7 +124,7 @@ const AlertsPanel = () => {
                         <h4 className="font-semibold text-foreground hover:text-primary transition-colors">{alert.title}</h4>
                         {getSeverityBadge(alert.severity)}
                       </div>
-                      <p className="text-sm text-muted-foreground">{alert.location}</p>
+                      <p className="text-sm text-muted-foreground">{alert.region}</p>
                       <p className="text-sm">{alert.description}</p>
                       <div className="flex items-center justify-between pt-2">
                         <span className="text-xs text-muted-foreground">{alert.time}</span>
