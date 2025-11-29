@@ -5,44 +5,52 @@ import { Progress } from '@/components/ui/progress';
 
 const predictions = [
   {
-    zone: 'Assam - Zone B',
+    region: 'Assam Region',
     riskLevel: 'high',
     probability: 85,
     trend: 'up',
-    factors: ['High rainfall', 'Poor drainage', 'Previous outbreaks'],
-    recommendation: 'Deploy preventive measures immediately',
+    factors: ['Industrial discharge', 'Poor drainage', 'High contamination index'],
+    recommendation: 'Deploy water treatment systems immediately',
   },
   {
-    zone: 'Manipur - Zone D',
+    region: 'Manipur Region',
     riskLevel: 'medium',
     probability: 58,
     trend: 'up',
-    factors: ['Water stagnation', 'Temperature rise'],
-    recommendation: 'Increase monitoring frequency',
+    factors: ['Agricultural runoff', 'Pesticide residues'],
+    recommendation: 'Increase water quality monitoring frequency',
   },
   {
-    zone: 'Tripura - Zone A',
+    region: 'Tripura Region',
     riskLevel: 'high',
     probability: 78,
     trend: 'up',
-    factors: ['Recent contamination', 'Dense population'],
-    recommendation: 'Urgent intervention required',
+    factors: ['Severe contamination', 'Dense population', 'Limited infrastructure'],
+    recommendation: 'Urgent intervention and water purification required',
   },
   {
-    zone: 'Meghalaya - Zone C',
+    region: 'Meghalaya Region',
     riskLevel: 'low',
     probability: 25,
     trend: 'down',
-    factors: ['Improved sanitation', 'Regular testing'],
-    recommendation: 'Continue current protocols',
+    factors: ['Improved sanitation', 'Regular testing', 'Natural filtration'],
+    recommendation: 'Continue current water treatment protocols',
   },
   {
-    zone: 'Nagaland - Zone E',
+    region: 'Nagaland Region',
     riskLevel: 'medium',
     probability: 52,
     trend: 'stable',
-    factors: ['Seasonal patterns', 'Moderate risk factors'],
-    recommendation: 'Enhanced surveillance needed',
+    factors: ['Seasonal contamination', 'Mining activities nearby'],
+    recommendation: 'Enhanced surveillance and testing needed',
+  },
+  {
+    region: 'Mizoram Region',
+    riskLevel: 'medium',
+    probability: 48,
+    trend: 'stable',
+    factors: ['Chemical runoff', 'Limited water treatment'],
+    recommendation: 'Upgrade filtration systems',
   },
 ];
 
@@ -89,8 +97,8 @@ const PredictiveAnalytics = () => {
       <CardHeader>
         <div className="flex items-start justify-between">
           <div>
-            <CardTitle className="text-2xl hover:text-primary transition-colors">7-Day Outbreak Forecast</CardTitle>
-            <CardDescription>AI-powered risk assessment for water-borne disease outbreaks</CardDescription>
+            <CardTitle className="text-2xl hover:text-primary transition-colors">Contamination Risk Forecast</CardTitle>
+            <CardDescription>AI-powered contamination risk assessment for northeastern regions</CardDescription>
           </div>
           <Badge variant="secondary" className="text-sm hover:scale-110 transition-transform">
             <Activity className="w-3 h-3 mr-1" />
@@ -108,7 +116,7 @@ const PredictiveAnalytics = () => {
             >
               <div className="flex items-start justify-between">
                 <div className="space-y-1">
-                  <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">{pred.zone}</h4>
+                  <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">{pred.region}</h4>
                   <div className="flex items-center gap-2">
                     {getRiskBadge(pred.riskLevel)}
                     <div className="group-hover:scale-125 transition-transform">
@@ -155,9 +163,9 @@ const PredictiveAnalytics = () => {
 
         <div className="mt-6 p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
           <p className="text-sm text-muted-foreground">
-            <strong className="text-foreground">Model Accuracy:</strong> Predictions based on historical data, 
-            weather patterns, water quality parameters, and disease surveillance data. 
-            Current model accuracy: 87.3% over 6-month validation period.
+            <strong className="text-foreground">Model Accuracy:</strong> Predictions based on contamination levels, 
+            industrial discharge patterns, water quality parameters, and regional health surveillance data. 
+            Current model accuracy: 89.7% over 12-month validation period.
           </p>
         </div>
       </CardContent>
